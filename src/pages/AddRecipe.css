@@ -1,0 +1,255 @@
+/* ✅ 1. IMPORT FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+/* --- MAIN PAGE SETUP (Fixed Background) --- */
+.add-recipe-container {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+     url('https://img.freepik.com/premium-photo/cheeseburger-with-sesame-bun-french-fries-dark-surface_1223942-40933.jpg?semt=ais_hybrid&w=740&q=80'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps image frozen */
+  
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* No outer scrollbar */
+  
+  /* Layout: Header space + Centering */
+  padding-top: 100px; 
+  display: flex;
+  justify-content: flex-end; /* Form on the right */
+  align-items: center;       /* Vertically centered */
+  padding-right: 8%;         /* Space from right edge */
+  box-sizing: border-box;
+}
+
+/* --- BACK BUTTON (Fixed Top Left) --- */
+.back-btn-wrapper {
+  position: fixed;
+  top: 100px;
+  left: 10px;
+  z-index: 50;
+}
+
+.back-btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  background: #d35400;
+  color: white;
+}
+
+/* --- THE FORM CARD (The Clean Rectangle) --- */
+.recipe-form-card {
+  background: white;
+  width: 550px; /* Fixed handy width */
+  
+  /* Height logic: Fits screen, scrolls internally */
+  height: calc(100vh - 140px); 
+  overflow-y: auto;
+  
+  padding: 40px;
+  border-radius: 8px; /* Standard rounded corners (not too round) */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  
+  /* Scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+/* Scrollbar for Chrome/Safari */
+.recipe-form-card::-webkit-scrollbar {
+  width: 6px;
+}
+.recipe-form-card::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+/* --- FORM LAYOUT (Clean Stack) --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Consistent space between every item */
+}
+
+/* Title Styling */
+.form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+/* --- INPUT GROUPS --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between Label and Input */
+}
+
+label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Standard Inputs */
+input, textarea {
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px; /* slightly rounded */
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  background: #f9f9f9;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #27ae60;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* Textarea specific */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* --- THE "SIDE-BY-SIDE" ROW (For small items only) --- */
+/* This fixes the messiness by only grouping Servings & Cuisine */
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group.half {
+  flex: 1; /* Each takes 50% width */
+}
+
+/* --- ICONS INSIDE INPUTS --- */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.input-with-icon input {
+  padding-left: 45px; /* Space for the icon */
+}
+
+/* --- SUBMIT BUTTON --- */
+.submit-btn {
+  background: #27ae60; /* Solid Green */
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  background: #219150;
+}
+
+/* Hide Image Preview to keep it clean (Optional) */
+.image-preview-container {
+  display: none;
+}
+/* --- MOBILE RESPONSIVENESS (Fixes Overlap & Styles Button) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Container: Make it RELATIVE so items inside position correctly */
+  .add-recipe-container {
+    position: relative; /* Important! Starts AFTER the Navbar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0; 
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* 2. Back Button Wrapper: Absolute position relative to the Container */
+  .back-btn-wrapper {
+    position: absolute; 
+    top: 120px;  /* 20px from the start of the image (below navbar) */
+    left: 20px; /* Left align */
+    z-index: 1;
+    display: block;
+  }
+
+  /* 3. Button Style: Matches 'My Creations' (White Pill, No Border) */
+  .back-btn {
+    background: white;
+    color: #333;
+    border: none;         /* ❌ Removed border to match screenshot */
+    border-radius: 30px;  /* Pill shape */
+    padding: 8px 20px;    /* Mobile sizing */
+    font-weight: 700;     /* Bold text */
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Nice pop shadow */
+    font-size: 0.9rem;
+    white-space: nowrap;
+
+  }
+
+  /* 4. Form Card: Push down so it doesn't cover the button */
+  .recipe-form-card {
+    width: 90%;
+    max-width: 600px;
+    margin-top: 170px; /* 👈 Push form down to clear the back button */
+    margin-left: 40px;
+    margin-bottom: 40px;
+    height: auto;
+    overflow: visible;
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+
+  /* 5. Font & Layout Fixes */
+  .form-title {
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input, textarea {
+    font-size: 16px; /* Prevents zoom on iPhone */
+  }
+}

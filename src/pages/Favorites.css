@@ -1,0 +1,265 @@
+/* Favorites.css - Matched to MyRecipes.css style */
+
+/* 1. MAIN PAGE CONTAINER (Dark Overlay Background) */
+.favorites-container {
+  background-color: #1a1a1a; /* Fallback */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('../assets/recipe.png'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  
+  /* Layout */
+  padding-top: 100px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  position: relative; 
+}
+
+/* 2. BACK BUTTON CONTAINER (Transparent Wrapper) */
+.back-btn-container {
+  width: 100%;
+  max-width: 1600px; /* Matches grid max-width */
+  display: flex;     
+  justify-content: flex-start; /* Aligns button to Left */
+  padding: 0 40px;   /* Matches MyRecipes padding */
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  z-index: 1;
+  /* Ensure transparent background */
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 3. BACK BUTTON (White Pill Style) */
+.back-btn {
+  background: white;
+  color: #333;
+  padding: 10px 24px;
+  border-radius: 30px; /* Pill Shape */
+  border: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background 0.2s;
+  margin-top: 20px;
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; 
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  background-color: #f5f5f5;
+}
+
+/* 4. HEADER (Title & Subtitle) */
+.fav-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  margin-top: -30px;
+
+}
+
+/* Title Font: Merriweather (Matches MyRecipes) */
+.cookbook-title {
+  font-family: 'Merriweather', serif; 
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 4px 1px rgba(0, 0, 0, 0.8); /* Depth Shadow */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Stats Pill (Glassy Effect) */
+.stats-pill {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+
+/* 5. THE GRID */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 6. EMPTY STATE (White Box) */
+.empty-state {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  max-width: 500px;
+  padding: 30px 30px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.6);
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-state p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #2d2d2d;
+  margin: 0 0 10px 0;
+  text-shadow: none;
+}
+
+.browse-btn {
+  background-color: #27ae60;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+  transition: transform 0.2s;
+  margin-top: 20px;
+}
+
+.browse-btn:hover {
+  transform: translateY(-2px);
+  background-color: #d84315; /* Orange hover matching create btn */
+}
+
+/* 7. PAGINATION & SCROLL */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.pagination-btn {
+  background: white;
+  color: #333;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-btn:hover {
+  transform: translateY(-2px);
+}
+
+.end-msg {
+  color: rgba(255,255,255,0.8);
+  margin-top: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #d84315;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+/* --- MOBILE RESPONSIVENESS (Identical Logic to MyRecipes) --- */
+@media (max-width: 768px) {
+  
+  .favorites-container {
+    padding-top: 120px; 
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block; /* Allows absolute positioning */
+  }
+
+  /* Force Back Button to Top Left Corner */
+  .back-btn-container {
+    position: absolute;
+    top: 100px; /* Aligns with MyRecipes header logic */
+    left: 10px;
+  }
+  
+  .back-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    z-index: 1;
+  }
+
+  /* Push Header Down */
+  .fav-header {
+    margin-top: 10px; 
+    margin-bottom: 30px;
+    display: block;
+    position: relative;
+  }
+
+  .cookbook-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    padding-top:2px;
+    margin-bottom: 10px;
+  }
+
+  .stats-pill {
+    margin-bottom: 20px;
+  }
+
+  /* Single Column Grid */
+  .favorites-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 25px;
+    width: 92%;
+    margin: 0 auto; /* Center the grid */
+  }
+  
+  .empty-state {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+}

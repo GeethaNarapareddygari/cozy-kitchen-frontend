@@ -1,0 +1,158 @@
+.recipes-page {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('../assets/back.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #d0caca;
+  min-height: 100vh;
+  padding-top: 110px;
+  padding-bottom: 120px;
+}
+.back-btn-container {
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 40px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+
+  background: transparent;
+}
+.back-btn {
+  background: white;
+  color: #333;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background 0.2s;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  background-color: #f5f5f5;
+}
+
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+.loading-text {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  color: #444;
+}
+.pagination-buttons {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 15px;
+width: 100%;
+margin: 60px 0;
+}
+
+.show-more-btn, .show-less-btn {
+padding: 14px 35px;
+border-radius: 50px;
+font-size: 1.1rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+min-width: 250px;
+/* Orange Style */
+background: #e65100;
+border: none;
+color: white;
+box-shadow: 0 4px 15px rgba(230, 81, 0, 0.3);
+}
+
+.show-more-btn:hover, .show-less-btn:hover {
+background: #ff6d00;
+transform: translateY(-3px);
+box-shadow: 0 6px 20px rgba(230, 81, 0, 0.4);
+}
+
+.show-less-btn {
+background: #7f8c8d; /* Grey for 'Show Less' */
+box-shadow: none;
+}
+
+.show-less-btn:hover {
+background: #95a5a6;
+}
+
+/* 6. Scroll Top Button */
+.scroll-top-btn {
+position: fixed;
+bottom: 30px;
+right: 30px;
+width: 50px;
+height: 50px;
+background-color: #e65100;
+color: white;
+border: none;
+border-radius: 50%;
+font-size: 1.5rem;
+cursor: pointer;
+box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .recipes-page {
+    padding-top: 160px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .back-btn-container {
+    position: absolute;
+    top: 120px;
+    left: 10px;
+    padding: 0;
+  }
+
+  .back-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+   .pagination-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .show-more-btn,
+  .show-less-btn {
+    width: 60%;
+  }
+}

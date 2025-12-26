@@ -1,0 +1,489 @@
+.my-recipes-container{
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('../assets/recipe.png'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-top: 100px  ;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+
+}
+
+.page-title{
+  font-family: 'Merriweather', serif;
+  font-size: 3rem;
+  color: #ffffff ;
+  text-shadow: 0 4px 1px rgba(0, 0, 0, 0.8); /* Stronger shadow for depth */
+  text-align: center;
+  margin-top: 30px;
+ 
+}
+.stats-pill {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff !important; /* White text */
+  margin-bottom: 35px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.my-recipes-header {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+   
+  justify-content: space-between;
+  align-items: center; /* Keeps buttons and title vertically aligned */
+  margin-bottom: 20px;
+  padding: 0 40px; /* 👈 Adds space on the left and right sides */
+  box-sizing: border-box;
+}
+
+
+/* Buttons */
+.back-btn {
+  background: white;
+  color: #333;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+
+}
+
+/* MyRecipes.css */
+.create-btn {
+  background-color: #d35400; 
+  color: white;
+  margin-top: 20px;
+  
+  /* Sizing - Use smaller values */
+  padding: 6px 16px;      /* 👈 Vertical 6px, Horizontal 16px */
+  font-size: 1rem;      /* 👈 Smaller text */
+  font-weight: 700;       /* 👈 Make it bold to remain readable */
+  line-height: 2.5;         /* 👈 Prevents the text from adding extra height */
+  
+  /* Layout */
+  display: inline-flex;   /* 👈 Shrinks the button to fit the text only */
+  align-items: center;
+  justify-content: center;
+  width: fit-content;    /* 👈 Ensures it doesn't stretch */
+  
+  border-radius: 50px;    /* Pill shape matches your screenshot */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  text-decoration: none;  /* In case it's a Link tag */
+}
+
+.create-btn:hover {
+  background-color: #d35400;
+  transform: translateY(-1px);
+}
+
+/* 3. GRID LAYOUT (Fixes the wide card issue) */
+.recipes-grid {
+  display: grid;
+  /* Columns are approx 300px wide. Fits 3-4 on desktop, 1 on mobile */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* 4. CARD STYLING (The Polish) */
+.custom-recipe-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden; /* Ensures image corners are rounded */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Fixed height makes grid look uniform */
+  position: relative;
+}
+
+.custom-recipe-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Image Section */
+.card-image-wrapper {
+  width: 100%;
+  height: 200px; /* Fixed height for image area */
+  background-color: #f0f0f0; /* Grey placeholder if image fails */
+  position: relative;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* CROPS image to fill box perfectly */
+}
+
+/* Card Content */
+.card-details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes buttons to bottom */
+  gap: 10px;
+}
+
+.custom-recipe-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #222;
+  margin: 0;
+  white-space: nowrap;      /* Prevents title wrapping */
+  overflow: hidden;         /* Hides long text */
+  text-overflow: ellipsis;  /* Adds "..." */
+}
+
+/* Tags */
+.card-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tag {
+  background: #fff5e6; /* Light Orange */
+  color: #e67e22;      /* Dark Orange */
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* 5. ACTION BUTTONS (Bottom Row) */
+.card-actions {
+  margin-top: auto; /* Pushes to very bottom */
+  display: flex;
+  gap: 12px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.view-btn {
+  flex: 1;
+  background: white;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.view-btn:hover {
+  background: #f5f5f5;
+}
+
+.delete-btn {
+  flex: 0.5;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
+
+
+.loading-text, .empty-state p {
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.empty-state {
+  background-color: rgba(255, 255, 255, 0.95); 
+  backdrop-filter: blur(5px);
+  width: 100%;
+  max-width: 500px; 
+  margin: 60px auto;
+  padding: 30px 30px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255,255,255, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-state p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #2d2d2d;
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  text-shadow: none;
+}
+
+.empty-state .sub-text {
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 400;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+.start-cooking-btn {
+  background-color: #27ae60; 
+  color: white;
+  padding: 14px 45px;
+  border-radius: 50px; 
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3); 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+}
+
+.start-cooking-btn:hover {
+  transform: translateY(-3px); 
+  background-color: #d84315;
+  box-shadow: 0 10px 25px rgba(216, 67, 21, 0.4);
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95); 
+  backdrop-filter: blur(8px);            
+  padding: 30px 35px;
+  border-radius: 24px;                    
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); 
+  width: 100%;
+  max-width: 500px; 
+  margin-top: 200px;   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; 
+}
+
+
+.login-card h2 {
+ font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #2d2d2d;
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  text-shadow: none;
+}
+
+.browse-btn {
+  background-color: #27ae60;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.browse-btn:hover {
+  transform: translateY(-2px);
+  background-color: #d84315;
+}
+/* --- FIXED MOBILE RESPONSIVENESS (Buttons in Corners) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Container: Adjust padding to fit the new header layout */
+  .my-recipes-container {
+    padding-top: 120px ; /* Enough space for Navbar */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* 2. Header: Enable absolute positioning context */
+  .my-recipes-header {
+    display: block; /* Remove flex column so we can position manually */
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    height: auto; /* Allow it to grow */
+  }
+
+  /* 3. Back Button: Top Left Corner */
+  .back-btn {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important; /* Remove vertical centering */
+    width: auto !important;     /* Keep it small */
+    padding: 8px 16px !important;
+    margin: 0;
+  }
+
+  /* 4. Create Button: Top Right Corner */
+  .create-btn {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    width: auto !important;
+    padding: 2px 16px !important;
+    margin: 0;
+  }
+
+  /* 5. Title: Push down so it sits BELOW the buttons */
+  .page-title {
+    padding-top: 30px; /* 👈 Creates space for the buttons above */
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  /* 6. Grid & Card Adjustments */
+  .recipes-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .empty-state, .login-card {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px 20px;
+  }
+  .recipes-grid {
+    display: grid;
+    /* Force 1 column that fills the width */
+    grid-template-columns: 1fr; 
+    gap: 25px; /* Space between cards */
+    width: 92%;
+  }
+
+  /* 4. RECIPE CARD (Mobile Sizing) */
+  .custom-recipe-card {
+    height: auto; /* Let card grow naturally based on content */
+    min-height: 380px; /* Ensure minimum height for consistency */
+  }
+
+  .card-image-wrapper {
+    height: 200px; /* Slightly shorter image on mobile */
+  }
+
+  .card-details {
+    padding: 15px; /* Compact padding */
+  }
+
+  .custom-recipe-card h3 {
+    font-size: 1.3rem; /* Readable title size */
+    white-space: normal; /* Allow title to wrap on mobile if needed */
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+}
+/* MyRecipes.css */
+
+/* 1. The Overlay: Covers the whole screen and blocks interaction */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    z-index: 9999;           /* Sit on top of everything */
+    backdrop-filter: blur(4px); /* Optional: nice blur effect */
+}
+
+/* 2. The Modal Box */
+.delete-modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    animation: popIn 0.3s ease-out;
+}
+
+/* 3. Modal Text */
+.delete-modal-content h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.4rem;
+}
+
+.delete-modal-content p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* 4. Animation for pop effect */
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 5. Reuse your buttons (Ensure these exist in your CSS) */
+.confirm-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.confirm-btn-yes {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.confirm-btn-no {
+    background-color: #e0e0e0; /* Gray */
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.confirm-btn-yes:hover { background-color: #c82333; }
+.confirm-btn-no:hover { background-color: #d6d6d6; }

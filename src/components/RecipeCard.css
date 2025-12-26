@@ -1,0 +1,121 @@
+/* src/components/RecipeCard.css */
+
+.recipe-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 200px; /* Slightly taller for better visuals */
+  overflow: hidden;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.recipe-card:hover .card-image-wrapper img {
+  transform: scale(1.05);
+}
+
+/* Heart Button */
+.heart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+  z-index: 2;
+}
+
+.heart-btn:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+.heart-icon {
+  fill: #bbb;
+  transition: fill 0.3s ease;
+}
+
+.heart-btn.active .heart-icon {
+  fill: #ff4081; /* Pink/Red */
+}
+
+/* Content Area */
+.card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes footer to bottom */
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: #2c3e50;
+  line-height: 1.4;
+}
+
+/* ✅ NEW TAGS FOOTER */
+.card-footer-tags {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Ensures it sits at the bottom */
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.meta-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.meta-tag .icon {
+  margin-right: 6px;
+  font-size: 1rem;
+}
+
+/* Blue Style for Cuisine (e.g. Italian) */
+.meta-tag.cuisine {
+  background-color: #e3f2fd; 
+  color: #1565c0;
+}
+
+/* Orange Style for Category (e.g. Seafood) */
+.meta-tag.category {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}

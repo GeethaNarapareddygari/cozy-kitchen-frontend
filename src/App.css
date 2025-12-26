@@ -1,0 +1,290 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 18px;
+  background: white;
+  position: fixed; 
+  width: 100%;
+  z-index: 10;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo {
+  width: 60px;    
+  height: 60px;
+  border-radius: 50%; 
+  object-fit: cover;
+  
+}
+
+.logo-text {
+  font-weight: bold;
+  color: #d35400;
+  font-size: 2.0rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none; 
+  color: #000000;          
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #ff6b6b;        
+}
+.hero {
+  height: 100vh;
+  background-image: url('./assets/home.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hero-overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3.6rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.find-recipes-btn {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #d84315;
+  background: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 
+    0 10px 20px rgba(0,0,0,0.19), 
+    0 6px 6px rgba(0,0,0,0.23),
+    inset 0 -3px 0 rgba(0,0,0,0.1); 
+    
+  transition: all 0.2s ease;
+}
+
+.find-recipes-btn:active {
+  transform: translateY(2px);
+  box-shadow: 
+    0 3px 6px rgba(0,0,0,0.16), 
+    0 3px 6px rgba(0,0,0,0.23);
+}
+
+.profile-icon {
+  width: 42px;
+  height: 42px;
+  margin-left: 15px;
+  background: linear-gradient(135deg, #e65100, #ff9100);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 4px 15px rgba(230, 81, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1) rotate(5deg); 
+  box-shadow: 0 6px 20px rgba(230, 81, 0, 0.5);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 55px; 
+  right: 0;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  width: 150px;
+  overflow: hidden;
+  z-index: 1001;
+  animation: fadeIn 0.2s ease;
+}
+
+.dropdown-item {
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: sans-serif;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+.login-btn-container {
+  display: flex;
+  align-items: center;
+  background-color: #d84315; 
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px; 
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.2s;
+  gap: 10px; 
+}
+
+.login-btn-container:hover {
+  background-color: #bf360c;
+  transform: scale(1.05);   
+  color: white;
+}
+
+.login-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2); 
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+.login-text {
+  font-size: 1rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.menu-icon {
+  display: none;
+}
+
+.search-results-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  min-height: 50vh;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 30px;
+  font-weight: 500;
+  animation: pulse 1.5s infinite;
+}
+
+.results-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #333;
+  font-family: serif; 
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto; 
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+    position: fixed; /* Necessary for the menu to stick below it */
+    justify-content: space-between; 
+    align-items: center;
+  }
+  .menu-icon {
+    display: block;
+    font-size: 1.8rem;
+    color: #d35400; /* Match Logo Color */
+    cursor: pointer;
+  }
+  .nav-links {
+    display: none; /* Hidden until opened */
+    position: absolute;
+    top: 100%; /* Pushes it exactly below the white navbar */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 30px 0; /* Add bottom padding for space */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Soft shadow */
+    border-top: 1px solid #f0f0f0;
+    z-index: 1000;
+  }
+  .nav-links.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out forwards;
+  }
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    color: #333;
+    border-bottom: 1px solid #f9f9f9;
+  }
+
+  .nav-links a:hover {
+    background-color: #fff5e6; 
+    color: #d35400;
+  }
+
+  .login-btn-container {
+    width: fit-content ;
+    margin-top: 25px; 
+    padding: 10px 30px ;
+    font-size: 1rem;
+    display: flex;
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

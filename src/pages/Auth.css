@@ -1,0 +1,251 @@
+/* src/pages/Auth.css */
+
+/* --- 0. IMPORTS & VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary-color: #d84315;
+  --primary-hover: #bf360c;
+  --text-dark: #2d3436;
+  --text-light: #636e72;
+  --input-bg: #f3f4f6;
+  --white: #ffffff;
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* --- 1. MAIN LAYOUT --- */
+.split-screen-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--white);
+  font-family: 'Poppins', sans-serif; 
+}
+
+.left-pane {
+  flex: 1.3; 
+  background-image: url('https://thefirstmess.com/wp-content/uploads/2016/03/16-6634-post/vegan-sweet-potato-noodles-creamy-chipotle-miso-sauce-5-740x1110.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end; /* Move text to bottom */
+  justify-content: flex-start;
+}
+
+/* Dark gradient overlay so text pops */
+.left-pane::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.image-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 60px;
+  color: white;
+  text-align: left;
+  max-width: 600px;
+}
+
+.image-overlay h1 { 
+  font-size: 3.5rem; 
+  margin-bottom: 10px; 
+  font-family: 'Playfair Display', serif; 
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.image-overlay p { 
+  font-size: 1.2rem; 
+  font-weight: 300; 
+  opacity: 0.9; 
+  letter-spacing: 0.5px;
+}
+
+/* --- 3. RIGHT PANE (Form) --- */
+.right-pane {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.login-box-clean {
+  width: 100%;
+  max-width: 400px; /* Slightly narrower for elegance */
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Header Styling */
+.login-box-clean h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2px;
+  color: var(--text-dark);
+  font-family: 'Playfair Display', serif;
+}
+
+.sub-text {
+  color: var(--text-light);
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+/* --- 4. FORM ELEMENTS --- */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modern Input Style */
+.login-box-clean input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid transparent; /* No border initially */
+  border-radius: 12px; /* Softer corners */
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-dark);
+  margin-bottom: 2px;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+.login-box-clean input:focus {
+  background-color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(216, 67, 21, 0.15); /* Soft orange glow */
+  outline: none;
+}
+
+/* --- 5. BUTTONS --- */
+.login-btn-full,.secondary-btn {
+  background: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(216, 67, 21, 0.3); /* Button shadow */
+}
+
+.login-btn-full:hover,.secondary-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 15px rgba(216, 67, 21, 0.4);
+}
+
+.login-btn-full:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- 6. LINKS & HELPERS --- */
+.forgot-password-container {
+  text-align: right;
+  margin-top: -8px;
+  margin-bottom: 0px;
+}
+
+.forgot-password-link {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.forgot-password-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.bottom-text {
+  margin-top: 30px;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.bottom-text a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bottom-text a:hover {
+  text-decoration: underline;
+}
+
+.error-msg {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  text-align: center;
+  border: 1px solid #ef9a9a;
+}
+
+/* --- 7. ANIMATIONS --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 900px) {
+  .left-pane { display: none; }
+  .right-pane { 
+    padding: 20px; 
+    align-items: flex-start; 
+    padding-top: 100px;
+  }
+}
+/* src/pages/Auth.css */
+
+/* ... other styles ... */
+
+/* NEW: Prominent Error Banner */
+.error-banner {
+  background-color: #ffebee; /* Light red background */
+  color: #d32f2f;            /* Dark red text for contrast */
+  border: 1px solid #ef9a9a; /* Red border */
+  padding: 16px;
+  border-radius: 12px;       /* Rounded corners to match inputs */
+  text-align: center;
+  font-weight: 10000;          /* Bold text */
+  width: 100%;               /* Full width of the container */
+  box-sizing: border-box;    /* Ensures padding doesn't break width */
+  margin-bottom: 25px;       /* Space between banner and form */
+  
+  /* Optional: A subtle slide-down animation */
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Animation definition */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
