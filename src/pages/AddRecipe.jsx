@@ -82,7 +82,7 @@ const AddRecipe = () => {
     };
 
     const newRecipe = {
-      userId: user.id, 
+      userId: user._id || user.id, 
       title: formData.title,
       image: fixUrl(formData.image), // Clean the image URL
       servings: parseInt(formData.servings) || 1, 
