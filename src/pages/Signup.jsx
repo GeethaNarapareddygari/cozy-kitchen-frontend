@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast'; // ✅ Added missing import
+import toast from 'react-hot-toast';
+import emailjs from '@emailjs/browser'; // 👈 Import EmailJS
 import './Auth.css';
 
 const Signup = () => {
@@ -16,14 +17,21 @@ const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // 👇 REPLACE THESE WITH YOUR ACTUAL KEYS FROM EMAILJS DASHBOARD
+  const YOUR_SERVICE_ID = "service_fv9i37a"; 
+  const YOUR_TEMPLATE_ID = "template_ms7ffk7";
+  const YOUR_PUBLIC_KEY = "ZTDC3F-e5Nm9CNgAF";
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // 1. SIGNUP -> Get OTP from Backend -> Send via EmailJS
   const handleSignup = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
+
     try {
       const response = await fetch('https://cozy-kitchen-api.onrender.com/api/auth/signup', {
         method: 'POST',
@@ -33,19 +41,33 @@ const Signup = () => {
       const data = await response.json();
       
       if (response.ok) {
-        setStep(2); 
+        // ✅ Backend sent us the OTP in 'data.otp'
+        const otpCode = data.otp;
+
+        // 📧 Configure Email
+        const emailParams = {
+          to_email: formData.email,   // Must match {{to_email}} in EmailJS template
+          user_name: formData.username, // Must match {{user_name}} in EmailJS template
+          otp_code: otpCode           // Must match {{otp_code}} in EmailJS template
+        };
+
+        // 🚀 Send Email from Browser
+        await emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, emailParams, YOUR_PUBLIC_KEY);
+
         toast.success("OTP Sent to your email!"); 
+        setStep(2); // Move to verification screen
       } else {
         setError(data.message);
       }
     } catch (err) {
+      console.error(err);
       setError('Error connecting to server.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  // 2. VERIFY SUBMIT
+  // 2. VERIFY SUBMIT (Unchanged)
   const handleVerify = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -71,7 +93,7 @@ const Signup = () => {
     }
   };
 
-  // 3. RESEND CODE FUNCTION
+  // 3. RESEND CODE -> Get New OTP -> Send via EmailJS
   const handleResend = async () => {
     setIsLoading(true);
     setError('');
@@ -84,6 +106,17 @@ const Signup = () => {
       const data = await response.json();
       
       if (response.ok) {
+        // ✅ Backend sent new OTP
+        const newOtp = data.otp;
+
+        const emailParams = {
+          to_email: formData.email,
+          user_name: formData.username,
+          otp_code: newOtp
+        };
+
+        await emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, emailParams, YOUR_PUBLIC_KEY);
+
         toast.success("New Code Sent!"); 
       } else {
         setError(data.message);
